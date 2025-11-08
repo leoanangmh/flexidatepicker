@@ -1,0 +1,250 @@
+/**
+ * FlexiDatepicker Stylesheet
+ * Version 1.0.0
+ */
+
+/* --- Main Container --- */
+.mrdp-container {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    width: 310px;
+    background: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    /* --- New: For floating mode --- */
+    position: absolute;
+    z-index: 1000;
+    display: none;
+    /* Hidden by default */
+    opacity: 0;
+    transform: translateY(5px);
+    transition: opacity 0.15s ease-out, transform 0.15s ease-out;
+}
+
+/* --- New: Visible state --- */
+.mrdp-container.mrdp-visible {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Header & Navigation --- */
+.mrdp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 8px;
+    border-bottom: 1px solid #eee;
+}
+
+#mrdp-current-month-year {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.mrdp-nav-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: #007bff;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    transition: background-color 0.2s;
+}
+
+.mrdp-nav-btn:hover {
+    background-color: #f0f0f0;
+}
+
+/* --- Calendar Grid --- */
+.mrdp-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    padding: 8px;
+}
+
+.mrdp-day-header,
+.mrdp-day-cell {
+    text-align: center;
+    font-size: 14px;
+    box-sizing: border-box;
+    /* Ensures padding doesn't break layout */
+}
+
+.mrdp-day-header {
+    font-weight: 600;
+    color: #777;
+    padding: 8px 0;
+}
+
+.mrdp-day-cell {
+    height: 38px;
+    line-height: 38px;
+    cursor: pointer;
+    border-radius: 50%;
+    /* Default is round */
+    transition: background-color 0.15s, color 0.15s, border-radius 0.1s ease-in-out;
+    border: 1px solid transparent;
+    /* Placeholder for 'today' */
+}
+
+.mrdp-day-cell:not(.empty):not(.disabled):hover {
+    background-color: #f0f0f0;
+}
+
+.mrdp-day-cell.empty {
+    cursor: default;
+}
+
+/* --- Selection Styles --- */
+:root {
+    --mrdp-primary-color: #007bff;
+    --mrdp-primary-light: #e6f2ff;
+}
+
+/* Start of a range (or single selected day) */
+.mrdp-day-cell.selected-start {
+    background-color: var(--mrdp-primary-color);
+    color: white !important;
+    font-weight: 700;
+    border-radius: 50% 0 0 50%;
+}
+
+/* End of a range (or single selected day) */
+.mrdp-day-cell.selected-end {
+    background-color: var(--mrdp-primary-color);
+    color: white;
+    font-weight: 700;
+    border-radius: 0 50% 50% 0;
+}
+
+/* A day that is both start and end (single day range) */
+.mrdp-day-cell.selected-start.selected-end {
+    border-radius: 50%;
+}
+
+/* A day inside a range */
+.mrdp-day-cell.in-range {
+    background-color: var(--mrdp-primary-light);
+    color: #333;
+    border-radius: 0;
+    /* Connects the range */
+}
+
+/* Pending start of a new range */
+.mrdp-day-cell.pending-start {
+    background-color: var(--mrdp-primary-color);
+    color: white !important;
+    font-weight: 700;
+    opacity: 0.8;
+    animation: mrdp-pulse 1.5s infinite ease-in-out;
+    border-radius: 50%;
+    /* It's always a single day */
+}
+
+@keyframes mrdp-pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* --- Special Day Styles --- */
+.mrdp-day-cell.today {
+    border: 1px solid var(--mrdp-primary-color);
+    font-weight: 700;
+    color: var(--mrdp-primary-color);
+}
+
+.mrdp-day-cell.disabled {
+    cursor: not-allowed;
+    background-color: #f9f9f9;
+    color: #ccc;
+    text-decoration: line-through;
+}
+
+.mrdp-day-cell.disabled:hover {
+    background-color: #f9f9f9;
+    /* No hover effect */
+}
+
+
+/* --- Control Buttons --- */
+.mrdp-controls {
+    display: grid;
+    gap: 4px;
+    padding: 0 8px 8px;
+}
+
+.mrdp-controls button {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 8px 6px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.mrdp-controls button:hover {
+    background-color: #e0e0e0;
+}
+
+.mrdp-controls button.mrdp-btn-clear {
+    background-color: #fff0f0;
+    border-color: #fdd;
+    color: #d9534f;
+    font-weight: 600;
+}
+
+.mrdp-controls button.mrdp-btn-clear:hover {
+    background-color: #ffe0e0;
+}
+
+/* --- RTL Language Support --- */
+.mrdp-container.rtl {
+    direction: rtl;
+    /* Flip direction */
+}
+
+.mrdp-container.rtl .mrdp-header {
+    flex-direction: row-reverse;
+    /* Flip nav buttons */
+}
+
+.mrdp-container.rtl .mrdp-day-cell.selected-start {
+    border-radius: 0 50% 50% 0;
+    /* Flip start radius */
+}
+
+.mrdp-container.rtl .mrdp-day-cell.selected-end {
+    border-radius: 50% 0 0 50%;
+    /* Flip end radius */
+}
+
+.mrdp-day-disabled {
+    color: #ccc;
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+    opacity: 0.6;
+    pointer-events: none;
+}
