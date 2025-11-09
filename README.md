@@ -28,7 +28,7 @@ A lightweight, flexible, and powerful vanilla JavaScript datepicker with multipl
 
 ```html
 <!-- CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/leoanangmh/flexidatepicker@latest/dist/flexidatepicker.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/leoanangmh/flexidatepicker@latest/dist/flexidatepicker.min.css">
 
 <!-- JavaScript -->
 <script src="https://cdn.jsdelivr.net/gh/leoanangmh/flexidatepicker@latest/dist/flexidatepicker.umd.min.js"></script>
@@ -45,7 +45,7 @@ npm install flexidatepicker
 Download the latest release from the [releases page](https://github.com/leoanangmh/flexidatepicker/releases) and include the files in your project:
 
 ```html
-<link rel="stylesheet" href="path/to/flexidatepicker.css">
+<link rel="stylesheet" href="path/to/flexidatepicker.min.css">
 <script src="path/to/flexidatepicker.js"></script>
 ```
 
