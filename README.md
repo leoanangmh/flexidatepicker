@@ -20,7 +20,7 @@ A lightweight, flexible, and powerful vanilla JavaScript datepicker with multipl
 
 ## Demo
 
-[View Live Demo](https://your-demo-url.com)
+[View Live Demo](https://flexidatepicker.vercel.app/)
 
 ## Installation
 
