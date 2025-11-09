@@ -4,6 +4,7 @@ A lightweight, flexible, and powerful vanilla JavaScript datepicker with multipl
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
+[![](https://data.jsdelivr.com/v1/package/gh/leoanangmh/flexidatepicker/badge)](https://www.jsdelivr.com/package/gh/leoanangmh/flexidatepicker)
 
 ## Features
 
