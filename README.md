@@ -41,6 +41,12 @@ A lightweight, flexible, and powerful vanilla JavaScript datepicker with multipl
 npm install flexidatepicker
 ```
 
+### yarn
+
+```bash
+yarn add flexidatepicker
+```
+
 ### Manual Download
 
 Download the latest release from the [releases page](https://github.com/leoanangmh/flexidatepicker/releases) and include the files in your project:
@@ -123,6 +129,7 @@ Download the latest release from the [releases page](https://github.com/leoanang
 | `showSelectWeekdays` | Boolean | `true` | Show "Select Weekdays" button (multiple/multi-range modes) |
 | `showSelectWeekends` | Boolean | `true` | Show "Select Weekends" button (multiple/multi-range modes) |
 | `showSelectAllDays` | Boolean | `true` | Show "Select All Days" button (multiple/multi-range modes) |
+| `dualCalendar` | Boolean | `true` | Show Dual Calendar |
 
 ### Date Restrictions
 
