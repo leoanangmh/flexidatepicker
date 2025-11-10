@@ -9,7 +9,7 @@ jobs:
     name: Build, Test, and Publish
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: read 
 
     steps:
       - name: Checkout repository
@@ -23,9 +23,7 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: |
-          npm ci --ignore-scripts
-          npm rebuild rollup --build-from-source
+        run: npm ci 
 
       - name: Run tests (if defined)
         run: |

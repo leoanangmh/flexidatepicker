@@ -28,7 +28,8 @@
   },
   "homepage": "https://flexidatepicker.com",
   "scripts": {
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "test": "npm run build && echo \"Build OK. No test suite yet.\""
   },
   "devDependencies": {
     "@babel/core": "^7.24.0",
