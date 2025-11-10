@@ -7,9 +7,9 @@
   "module": "dist/flexidatepicker.esm.js",
   "jsdelivr": "dist/flexidatepicker.umd.min.js",
   "style": "dist/flexidatepicker.min.css",
-  "types": "dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/flexidatepicker.esm.min.js",
       "require": "./dist/flexidatepicker.umd.min.js"
     },
