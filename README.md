@@ -7,12 +7,13 @@ A lightweight, flexible, and powerful vanilla JavaScript datepicker with multipl
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 [![](https://data.jsdelivr.com/v1/package/gh/leoanangmh/flexidatepicker/badge)](https://www.jsdelivr.com/package/gh/leoanangmh/flexidatepicker)
 [![npm downloads](https://img.shields.io/npm/dm/flexidatepicker)](https://www.npmjs.com/package/flexidatepicker)
+[![build status](https://img.shields.io/github/actions/workflow/status/leoanangmh/flexidatepicker/npm-publish-github-packages.yml)](https://github.com/leoanangmh/flexidatepicker/actions)
 
 ## Features
 
 - **Four Selection Modes**: Single, Multiple, Range, and Multi-Range
 - **Zero Dependencies**: Pure vanilla JavaScript
-- **Lightweight**: ~15KB minified
+- **Lightweight**: ~5.5kB minified
 - **Customizable**: Extensive configuration options
 - **Responsive**: Works on all devices
 - **Accessible**: ARIA-compliant
