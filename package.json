@@ -6,8 +6,16 @@
   "main": "dist/flexidatepicker.umd.js",
   "module": "dist/flexidatepicker.esm.js",
   "jsdelivr": "dist/flexidatepicker.umd.min.js",
-  "style": "dist/flexidatepicker.css",
+  "style": "dist/flexidatepicker.min.css",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/flexidatepicker.esm.min.js",
+      "require": "./dist/flexidatepicker.umd.min.js"
+    },
+    "./package.json": "./package.json",
+    "./dist/flexidatepicker.min.css": "./dist/flexidatepicker.min.css"
+  },
   "files": [
     "dist"
   ],
