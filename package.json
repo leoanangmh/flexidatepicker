@@ -1,6 +1,6 @@
 {
   "name": "flexidatepicker",
-  "version": "1.0.0",
+  "version": "1.1.2",
   "description": "FlexiDatepicker — a flexible, dependency-free JavaScript date picker supporting single, multiple, range, and multi-range selection modes.",
   "author": "Leo Anang Miftahul Huda <leoanangmh@gmail.com>",
   "main": "dist/flexidatepicker.umd.js",
@@ -21,7 +21,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/leoanangmh/flexidatepicker.git"
+    "url": "git+https://github.com/leoanangmh/flexidatepicker.git"
   },
   "bugs": {
     "url": "https://github.com/leoanangmh/flexidatepicker/issues"
