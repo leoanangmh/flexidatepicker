@@ -1,13 +1,16 @@
 {
   "name": "flexidatepicker",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "FlexiDatepicker — a flexible, dependency-free JavaScript date picker supporting single, multiple, range, and multi-range selection modes.",
   "author": "Leo Anang Miftahul Huda <leoanangmh@gmail.com>",
   "main": "dist/flexidatepicker.umd.js",
   "module": "dist/flexidatepicker.esm.js",
-  "unpkg": "dist/flexidatepicker.min.js",
-  "jsdelivr": "dist/flexidatepicker.min.js",
+  "jsdelivr": "dist/flexidatepicker.umd.min.js",
   "style": "dist/flexidatepicker.css",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "datepicker",
     "date picker",
@@ -26,7 +29,7 @@
   "bugs": {
     "url": "https://github.com/leoanangmh/flexidatepicker/issues"
   },
-  "homepage": "https://flexidatepicker.com",
+  "homepage": "https://flexidatepicker.vercel.app",
   "scripts": {
     "build": "rollup -c",
     "test": "npm run build && echo \"Build OK. No test suite yet.\""
