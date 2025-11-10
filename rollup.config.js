@@ -13,18 +13,6 @@ export default [
     {
         input: 'src/flexidatepicker.js',
         output: {
-            file: 'dist/flexidatepicker.umd.js',
-            format: 'umd',
-            name: 'FlexiDatepicker',
-            sourcemap: true
-        },
-        plugins: [
-            babel(babelConfig)
-        ]
-    },
-    {
-        input: 'src/flexidatepicker.js',
-        output: {
             file: 'dist/flexidatepicker.umd.min.js',
             format: 'umd',
             name: 'FlexiDatepicker',
@@ -34,19 +22,6 @@ export default [
             babel(babelConfig),
             terser()
         ]
-    },
-    {
-        input: 'src/flexidatepicker.js',
-        output: {
-            file: 'dist/flexidatepicker.min.js',
-            format: 'umd',
-            name: 'FlexiDatePicker',
-            sourcemap: true,
-        },
-        plugins: [
-            babel(babelConfig),
-            terser(),
-        ],
     },
     {
         input: 'src/flexidatepicker.css',
@@ -65,17 +40,6 @@ export default [
                 ],
             }),
         ],
-    },
-    {
-        input: 'src/flexidatepicker.js',
-        output: {
-            file: 'dist/flexidatepicker.esm.js',
-            format: 'es',
-            sourcemap: true
-        },
-        plugins: [
-            babel(babelConfig)
-        ]
     },
     {
         input: 'src/flexidatepicker.js',
