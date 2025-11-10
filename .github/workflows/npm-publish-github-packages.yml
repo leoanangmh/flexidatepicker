@@ -1,7 +1,4 @@
-# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
-
-name: Node.js Package
+name: Publish FlexiDatepicker
 
 on:
   release:
@@ -9,28 +6,66 @@ on:
 
 jobs:
   build:
+    name: Build and Test
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - run: npm ci
-#      - run: npm test
 
-  publish-gpr:
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 23
+          cache: 'npm'
+
+      - name: Clean install
+        run: |
+          rm -rf node_modules package-lock.json
+          npm install --ignore-scripts
+          npm rebuild rollup --build-from-source
+
+      - name: Build library
+        run: |
+          if npm run | grep -q "build"; then
+            npm run build
+          else
+            echo "No build script found."
+          fi
+
+      - name: Run tests (if defined)
+        run: |
+          if npm run | grep -q "test"; then
+            npm test
+          else
+            echo "No tests found, skipping..."
+          fi
+
+  publish-npm:
+    name: Publish to npmjs.com
     needs: build
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: write
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js for publish
+        uses: actions/setup-node@v4
         with:
-          node-version: 20
-          registry-url: https://npm.pkg.github.com/
-      - run: npm ci
-      - run: npm publish
+          node-version: 23
+          registry-url: 'https://registry.npmjs.org/'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          npm ci --ignore-scripts
+          npm rebuild rollup --build-from-source
+
+      - name: Publish to npmjs
+        run: |
+          npm publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
