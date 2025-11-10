@@ -1,9 +1,14 @@
 /**
- * FlexiDatepicker Stylesheet
- * Version 1.0.0
- */
+ * FlexiDatepicker
+ * A lightweight, dependency-free JavaScript date picker supporting single, multiple, range, and multi-range selection modes.
+ *
+ * @version 1.1.0
+ * @license MIT
+ * @author
+ *   Leo Anang Miftahul Huda
+ *
+ **/
 
-/* --- Main Container --- */
 .mrdp-container {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     width: 310px;
@@ -12,30 +17,93 @@
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 
-    /* --- New: For floating mode --- */
     position: absolute;
     z-index: 1000;
     display: none;
-    /* Hidden by default */
     opacity: 0;
     transform: translateY(5px);
     transition: opacity 0.15s ease-out, transform 0.15s ease-out;
 }
 
-/* --- New: Visible state --- */
+.mrdp-container.mrdp-dual-calendar {
+    width: 640px;
+}
+
+.mrdp-dual-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+}
+
+.mrdp-calendar-panel {
+    position: relative;
+}
+
+.mrdp-calendar-panel:first-child {
+    border-right: 1px solid #eee;
+}
+
+.mrdp-dual-calendar .mrdp-picker-overlay {
+    border-radius: 0;
+}
+
+.mrdp-dual-calendar .mrdp-calendar-panel:first-child .mrdp-picker-overlay {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.mrdp-dual-calendar .mrdp-calendar-panel:last-child .mrdp-picker-overlay {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
 .mrdp-container.mrdp-visible {
     display: block;
     opacity: 1;
     transform: translateY(0);
 }
 
-/* --- Header & Navigation --- */
 .mrdp-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 8px;
     border-bottom: 1px solid #eee;
+}
+
+.mrdp-month-year-display {
+    display: flex;
+    gap: 8px;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.mrdp-month-year-btn {
+    padding: 6px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.2s;
+    outline: none;
+    color: #333;
+}
+
+.mrdp-month-year-btn:hover {
+    background-color: #f8f9fa;
+    border-color: #007bff;
+    color: #007bff;
+}
+
+#mrdp-month-btn {
+    min-width: 100px;
+}
+
+#mrdp-year-btn {
+    min-width: 70px;
 }
 
 #mrdp-current-month-year {
@@ -65,8 +133,14 @@
     background-color: #f0f0f0;
 }
 
-/* --- Calendar Grid --- */
 .mrdp-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    padding: 8px;
+}
+
+.mrdp-grid-2 {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 2px;
@@ -78,7 +152,6 @@
     text-align: center;
     font-size: 14px;
     box-sizing: border-box;
-    /* Ensures padding doesn't break layout */
 }
 
 .mrdp-day-header {
@@ -92,10 +165,8 @@
     line-height: 38px;
     cursor: pointer;
     border-radius: 50%;
-    /* Default is round */
     transition: background-color 0.15s, color 0.15s, border-radius 0.1s ease-in-out;
     border: 1px solid transparent;
-    /* Placeholder for 'today' */
 }
 
 .mrdp-day-cell:not(.empty):not(.disabled):hover {
@@ -106,13 +177,11 @@
     cursor: default;
 }
 
-/* --- Selection Styles --- */
 :root {
     --mrdp-primary-color: #007bff;
     --mrdp-primary-light: #e6f2ff;
 }
 
-/* Start of a range (or single selected day) */
 .mrdp-day-cell.selected-start {
     background-color: var(--mrdp-primary-color);
     color: white !important;
@@ -120,7 +189,6 @@
     border-radius: 50% 0 0 50%;
 }
 
-/* End of a range (or single selected day) */
 .mrdp-day-cell.selected-end {
     background-color: var(--mrdp-primary-color);
     color: white;
@@ -128,20 +196,16 @@
     border-radius: 0 50% 50% 0;
 }
 
-/* A day that is both start and end (single day range) */
 .mrdp-day-cell.selected-start.selected-end {
     border-radius: 50%;
 }
 
-/* A day inside a range */
 .mrdp-day-cell.in-range {
     background-color: var(--mrdp-primary-light);
     color: #333;
     border-radius: 0;
-    /* Connects the range */
 }
 
-/* Pending start of a new range */
 .mrdp-day-cell.pending-start {
     background-color: var(--mrdp-primary-color);
     color: white !important;
@@ -149,7 +213,6 @@
     opacity: 0.8;
     animation: mrdp-pulse 1.5s infinite ease-in-out;
     border-radius: 50%;
-    /* It's always a single day */
 }
 
 @keyframes mrdp-pulse {
@@ -167,7 +230,6 @@
     }
 }
 
-/* --- Special Day Styles --- */
 .mrdp-day-cell.today {
     border: 1px solid var(--mrdp-primary-color);
     font-weight: 700;
@@ -183,11 +245,8 @@
 
 .mrdp-day-cell.disabled:hover {
     background-color: #f9f9f9;
-    /* No hover effect */
 }
 
-
-/* --- Control Buttons --- */
 .mrdp-controls {
     display: grid;
     gap: 4px;
@@ -220,25 +279,20 @@
     background-color: #ffe0e0;
 }
 
-/* --- RTL Language Support --- */
 .mrdp-container.rtl {
     direction: rtl;
-    /* Flip direction */
 }
 
 .mrdp-container.rtl .mrdp-header {
     flex-direction: row-reverse;
-    /* Flip nav buttons */
 }
 
 .mrdp-container.rtl .mrdp-day-cell.selected-start {
     border-radius: 0 50% 50% 0;
-    /* Flip start radius */
 }
 
 .mrdp-container.rtl .mrdp-day-cell.selected-end {
     border-radius: 50% 0 0 50%;
-    /* Flip end radius */
 }
 
 .mrdp-day-disabled {
@@ -247,4 +301,108 @@
     cursor: not-allowed;
     opacity: 0.6;
     pointer-events: none;
+}
+
+.mrdp-picker-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    z-index: 10;
+    border-radius: 8px;
+    padding: 12px;
+    animation: mrdp-fade-in 0.2s ease-out;
+}
+
+@keyframes mrdp-fade-in {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.mrdp-picker-header {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 12px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.mrdp-year-nav {
+    background: none;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: #007bff;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.mrdp-year-nav:hover {
+    background-color: #f0f0f0;
+}
+
+.mrdp-month-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.mrdp-year-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.mrdp-picker-item {
+    padding: 12px 8px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    background-color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #333;
+    text-align: center;
+}
+
+.mrdp-picker-item:hover {
+    background-color: #f0f7ff;
+    border-color: #007bff;
+    color: #007bff;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.1);
+}
+
+.mrdp-picker-item.active {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+    font-weight: 600;
+}
+
+.mrdp-picker-item.current-year {
+    border-color: #007bff;
+    font-weight: 600;
+    color: #007bff;
+}
+
+.mrdp-picker-item.current-year.active {
+    background-color: #007bff;
+    color: #fff;
 }
