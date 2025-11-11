@@ -248,20 +248,6 @@ Contributions are welcome! Please follow these steps:
 
 MIT License - see the [LICENSE](LICENSE) file for details
 
-## Author
-
-**Leo Anang Miftahul Huda**
-
-## Changelog
-
-### v1.0.0 (2025-09-11)
-- Initial release
-- Four selection modes: single, multiple, range, multi-range
-- Customizable date formatting
-- Date restrictions and disabled dates
-- Quick selection controls
-- Internationalization support
-
 ## Support
 
 - [Documentation](https://flexidatepicker.vercel.app/)
@@ -271,3 +257,9 @@ MIT License - see the [LICENSE](LICENSE) file for details
 ## Acknowledgments
 
 Built with vanilla JavaScript for maximum compatibility and performance.
+
+## Contributors
+
+<a href="https://github.com/leoanangmh/flexidatepicker/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=leoanangmh/flexidatepicker" />
+</a>
