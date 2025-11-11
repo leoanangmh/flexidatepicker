@@ -2,7 +2,7 @@
 
 A lightweight, flexible, and powerful vanilla JavaScript datepicker with multiple selection modes. No dependencies required.
 
-![Version](https://img.shields.io/badge/version-1.1.3-blue.svg)
+![Version](https://img.shields.io/badge/version-1.1.4-blue.svg)
 [![bundle size](https://img.shields.io/bundlephobia/minzip/flexidatepicker)](https://bundlephobia.com/package/flexidatepicker)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 [![](https://data.jsdelivr.com/v1/package/gh/leoanangmh/flexidatepicker/badge)](https://www.jsdelivr.com/package/gh/leoanangmh/flexidatepicker)
