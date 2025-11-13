@@ -874,7 +874,10 @@ export default class FlexiDatepicker {
     }
 
     isDateDisabled(date) {
-        const d = date.toISOString().split("T")[0]
+        const year = date.getFullYear()
+        const month = String(date.getMonth() + 1).padStart(2, '0')
+        const day = String(date.getDate()).padStart(2, '0')
+        const d = `${year}-${month}-${day}`
 
         if (this.options.disabledDates.some((dis) => dis === d)) {
             return true
@@ -882,14 +885,22 @@ export default class FlexiDatepicker {
 
         for (const item of this.options.disabledDates) {
             if (item && item.from && item.to) {
-                if (d >= item.from && d <= item.to) return true
+                if (d >= item.from && d <= item.to) {
+                    return true
+                }
             }
         }
 
         const today = new Date()
         today.setHours(0, 0, 0, 0)
-        if (this.options.disablePast && date < today) return true
-        if (this.options.disableFuture && date > today) return true
+        
+        const todayYear = today.getFullYear()
+        const todayMonth = String(today.getMonth() + 1).padStart(2, '0')
+        const todayDay = String(today.getDate()).padStart(2, '0')
+        const todayStr = `${todayYear}-${todayMonth}-${todayDay}`
+
+        if (this.options.disablePast && d < todayStr) return true
+        if (this.options.disableFuture && d > todayStr) return true
 
         if (this.options.minDate && d < this.options.minDate) return true
         if (this.options.maxDate && d > this.options.maxDate) return true
