@@ -1,6 +1,6 @@
 {
   "name": "flexidatepicker",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "FlexiDatepicker — a flexible, dependency-free JavaScript date picker supporting single, multiple, range, and multi-range selection modes.",
   "author": "Leo Anang Miftahul Huda <leoanangmh@gmail.com>",
   "main": "dist/flexidatepicker.umd.js",
