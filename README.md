@@ -133,6 +133,7 @@ Download the latest release from the [releases page](https://github.com/leoanang
 | `showSelectWeekends` | Boolean | `true` | Show "Select Weekends" button (multiple/multi-range modes) |
 | `showSelectAllDays` | Boolean | `true` | Show "Select All Days" button (multiple/multi-range modes) |
 | `dualCalendar` | Boolean | `true` | Show Dual Calendar |
+| `weekDayStartOn` | Number | `0` | First day of the week: `0` = Sunday, `1` = Monday, ..., `6` = Saturday |
 
 ### Date Restrictions
 
@@ -231,6 +232,15 @@ new FlexiDatepicker('#datepicker', {
   dateFormat: 'd/M/yyyy',
   showClearAll: true,
   showSelectWeekdays: false
+});
+```
+
+### Week Starting on Monday
+
+```javascript
+new FlexiDatepicker('#datepicker', {
+  mode: 'single',
+  weekDayStartOn: 1 // Monday
 });
 ```
 

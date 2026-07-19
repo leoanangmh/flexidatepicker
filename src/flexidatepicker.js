@@ -31,6 +31,7 @@ export default class FlexiDatepicker {
             minDate: null,
             maxDate: null,
             dualCalendar: false,
+            weekDayStartOn: 0, // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
             ...options,
         }
 
@@ -92,7 +93,7 @@ export default class FlexiDatepicker {
 
         const weekdayFormatter = new Intl.DateTimeFormat(this.options.locale, { weekday: "short" })
         const weekdayHeaders = []
-        const tempDate = new Date(2020, 5, 7)
+        const tempDate = new Date(2020, 5, 7 + this.options.weekDayStartOn)
         for (let i = 0; i < 7; i++) {
             const dayName = weekdayFormatter.format(
                 new Date(tempDate.getFullYear(), tempDate.getMonth(), tempDate.getDate() + i),
@@ -424,8 +425,9 @@ export default class FlexiDatepicker {
 
         const firstDayOfMonth = new Date(year, month, 1).getDay()
         const daysInMonth = new Date(year, month + 1, 0).getDate()
+        const startOffset = (firstDayOfMonth - this.options.weekDayStartOn + 7) % 7
 
-        for (let i = 0; i < firstDayOfMonth; i++) {
+        for (let i = 0; i < startOffset; i++) {
             const emptyCell = document.createElement("div")
             emptyCell.classList.add("mrdp-day-cell", "empty")
             grid.appendChild(emptyCell)
