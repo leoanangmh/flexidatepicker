@@ -485,6 +485,8 @@ export default class FlexiDatepicker {
     }
 
     handleDateClick(dateString) {
+        if (this.inputElement.matches(":disabled")) return
+
         switch (this.options.mode) {
             case "single":
                 this._handleSingleClick(dateString)
